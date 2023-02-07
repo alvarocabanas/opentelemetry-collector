@@ -18,6 +18,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/alvarocabanas/opentelemetry-collector/internal/obsreportconfig"
 	"net/http"
 	"strings"
 	"unicode"
@@ -42,7 +43,6 @@ import (
 
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/config/configtelemetry"
-	"go.opentelemetry.io/collector/internal/obsreportconfig"
 	"go.opentelemetry.io/collector/obsreport"
 	semconv "go.opentelemetry.io/collector/semconv/v1.5.0"
 	"go.opentelemetry.io/collector/service/telemetry"
@@ -102,7 +102,7 @@ func (tel *telemetryInitializer) init(buildInfo component.BuildInfo, logger *zap
 	// acting as a bridge between OC and Otel.
 	// This is used as a path to migrate the existing OpenCensus instrumentation
 	// to the OpenTelemetry Go SDK without breaking existing metrics.
-	promRegistry := prometheus.NewRegistry()
+	promRegistry := prometheus.DefaultGatherer.(*prometheus.Registry)
 	if tel.useOtel {
 		if err := tel.initOpenTelemetry(telAttrs, promRegistry); err != nil {
 			return err
