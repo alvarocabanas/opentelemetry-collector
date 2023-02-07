@@ -102,7 +102,7 @@ func (tel *telemetryInitializer) init(buildInfo component.BuildInfo, logger *zap
 	// acting as a bridge between OC and Otel.
 	// This is used as a path to migrate the existing OpenCensus instrumentation
 	// to the OpenTelemetry Go SDK without breaking existing metrics.
-	promRegistry := prometheus.NewRegistry()
+	promRegistry := prometheus.DefaultGatherer.(*prometheus.Registry)
 	if tel.useOtel {
 		if err := tel.initOpenTelemetry(telAttrs, promRegistry); err != nil {
 			return err
