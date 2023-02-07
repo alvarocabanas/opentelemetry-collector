@@ -1,4 +1,4 @@
-module go.opentelemetry.io/collector
+module github.com/alvarocabanas/opentelemetry-collector
 
 go 1.18
 
