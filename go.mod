@@ -1,4 +1,4 @@
-module go.opentelemetry.io/collector
+module github.com/alvarocabanas/opentelemetry-collector
 
 go 1.18
 
@@ -17,6 +17,7 @@ require (
 	github.com/spf13/cobra v1.6.1
 	github.com/stretchr/testify v1.8.1
 	go.opencensus.io v0.24.0
+	go.opentelemetry.io/collector v0.70.0
 	go.opentelemetry.io/collector/component v0.70.0
 	go.opentelemetry.io/collector/confmap v0.70.0
 	go.opentelemetry.io/collector/consumer v0.70.0
@@ -44,7 +45,6 @@ require (
 )
 
 require (
-	github.com/benbjohnson/clock v1.3.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
